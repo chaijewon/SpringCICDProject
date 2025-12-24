@@ -32,7 +32,7 @@ public interface BusanMapper {
    */
 	public int busanTotalPage(Map map);
 	
-	@Update("UPDATE busaltravel SET "
+	@Update("UPDATE busantravel SET "
 		   +"hit=hit+1 "
 		   +"WHERE no=#{no}")
 	public void busanHitIncrement(int no);
