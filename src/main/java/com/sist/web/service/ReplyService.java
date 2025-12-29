@@ -9,4 +9,8 @@ public interface ReplyService {
 			 +"WHERE cno=#{cno} AND type=#{type} "
 			 +"ORDER BY no DESC")*/
 	  public List<ReplyVO> replyListData(int cno,int type);
+	  /*@Insert("INSERT INTO comment_0 VALUES("
+				 +"(SELECT NVL(MAX(no)+1,1) FROM comment_0),"
+				 +"#{cno},#{type},#{id},#{name},#{msg},SYSDATE)")*/
+      public void replyInsert(ReplyVO vo);
 }
