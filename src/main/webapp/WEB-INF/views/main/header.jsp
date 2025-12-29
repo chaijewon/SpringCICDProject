@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+window._LOGIN_={
+		sessionId:'<%=session.getAttribute("id")!=null?session.getAttribute("id"):""%>'
+}
+</script>
 </head>
 <body>
 <!-- Header Section Begin -->
