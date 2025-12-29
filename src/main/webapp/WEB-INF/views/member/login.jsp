@@ -73,7 +73,9 @@
     		  const store=useMemberStore()
     		  const idRef=ref(null)
     		  const pwdRef=ref(null)
-    		  
+    		  onMounted(()=>{
+    			  store.init(window._LOGIN_)
+    		  })
     		  return {
     			  store,
     			  idRef,

@@ -5,9 +5,13 @@ const useMemberStore=defineStore('member',{
 		id:'',
 		name:'',
 		pwd:'',
-		isLogin:false
+		isLogin:false,
+		sessionId:''
 	}),
 	actions:{
+		init(session){
+			this.sessionId=session.id
+		},
 		async login(idRef,pwdRef){
 			if(this.id==='')
 			{
@@ -43,6 +47,7 @@ const useMemberStore=defineStore('member',{
 				alert("비밀번호가 틀립니다")
 				this.pwd=''	
 			}
+			console.log(this.sessionId)
 		},
 		async logout(){
 			const res=await axios.get('http://localhost:8080/member/logout_vue/')

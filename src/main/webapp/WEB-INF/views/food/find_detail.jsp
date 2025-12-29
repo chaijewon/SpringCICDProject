@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
     </section>
     <section class="product-details spad" id="food_detail">
         <div class="container">
-            <div class="row" style="margin: 0px auto">
+            <div class="row" style="margin: 0px auto" >
               <%-- 상세보기 --%>
               <table class="table">
                 <tr>
@@ -98,6 +99,35 @@
               <div id="map" style="width:100%;height:350px;"></div>
             </div>
             <%-- 댓글  --%>
+            <div class="row" style="margin: 20px auto">
+              <table class="table">
+                <tr>
+                  <td>
+                    <table class="table" v-for="rvo in store.reply">
+                     <tr>
+                      <td class="text-left">◑{{rvo.name}} {{rvo.dbday}}</td>
+                      <td class="text-right"></td>
+                     </tr>
+                     <tr>
+                      <td colspan="2">
+                        <pre style="white-space: pre-wrap;background-color: white;">{{rvo.msg}}</pre>
+                      </td>
+                     </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <c:if test="${sessionScope.id!=null }">
+               <table class="table">
+                <tr>
+                  <td class="text-center">
+                   <textarea rows="4" cols="60" style="float: left"></textarea>
+                   <button class="btn-success" style="width: 80px;height: 100px;float: left">댓글쓰기</button>
+                  </td>
+                </tr>
+              </table>
+              </c:if>
+            </div>
         </div>
         
     </section>
@@ -114,7 +144,9 @@
     		 
     		 
     		 onMounted(()=>{
+    			 store.foodReplyData(fno)
     			 store.foodDetailData(fno)
+    			 
     			 //  데이터 변경 감지 
     			 //  완성된 데이터 : computed()
     			 //if(!store.food_detail.address) return 
