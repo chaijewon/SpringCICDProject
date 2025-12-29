@@ -117,7 +117,7 @@
     			 store.foodDetailData(fno)
     			 //  데이터 변경 감지 
     			 //  완성된 데이터 : computed()
-    			 if(!store.address) return 
+    			 //if(!store.food_detail.address) return 
     			 if(window.kakao && window.kakao.maps)
     			 {
     				 initMap()
